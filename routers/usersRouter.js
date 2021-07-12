@@ -1,9 +1,24 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const { 
+    userSignup, 
+    userLogin, 
+    userLogout, 
+    userUpdate, 
+    logoutAllSessions 
+} = require('../controllers/userControllers');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+const router = express.Router();
+
+const jwtAuth = require("../middlewares/jwtAuth")
+
+
+router.post("/signup",userSignup)
+router.post("/login",userLogin)
+
+router.patch('/update', jwtAuth, userUpdate)
+
+router.delete('/logout', jwtAuth, userLogout)
+router.delete('/logoutall', jwtAuth, logoutAllSessions)
+
 
 module.exports = router;

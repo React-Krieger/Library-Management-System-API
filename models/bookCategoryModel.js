@@ -32,4 +32,5 @@ const bookCategorySchema = mongoose.Schema({
 
 const BookCategory = mongoose.model('bookCategory',bookCategorySchema)
 
-export default BookCategory
+module.exports = BookCategory
+

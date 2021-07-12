@@ -39,4 +39,4 @@ const issuedBookSchema = mongoose.Schema({
 
 const IssuedBook = mongoose.model('issuedBook',issuedBookSchema)
 
-export default IssuedBook
+modile.exports =  IssuedBook

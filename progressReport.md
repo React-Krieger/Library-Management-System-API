@@ -17,5 +17,19 @@
         . Category Model
 
     Created different models thinking it can help in performance improvement and simple to handle.
+
+## 12 Jul, 2021 (3rd day)
+
+    Connected MongoDB with the Backend App 
+
+    Created User Controllers and Routers 
+        . signup
+        . login
+        . update details excluding email
+        . logout current session
+        . logout all sessions
         
+    In login 
+        Implemented jsonwebtoken  and implemented persist session logic
+        Through JWT checking user authorization 
     
