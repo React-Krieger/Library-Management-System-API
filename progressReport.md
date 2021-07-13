@@ -33,3 +33,10 @@
         Implemented jsonwebtoken  and implemented persist session logic
         Through JWT checking user authorization 
     
+## 13 Jul, 2021 (4th day)
+
+    Patched 4 issues in schemas
+        . add default values where required
+        . use PascalCase for model name
+        . use 'ref' for adding foreign key
+        . Type of ISBN updated

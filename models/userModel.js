@@ -30,7 +30,8 @@ const userSchema = mongoose.Schema({
     },
     role:{
         type:String,
-        required:true
+        required:true,
+        default:'visitor'
     },
     tokens:[
         {
@@ -67,6 +68,6 @@ userSchema.pre('save',async function(){
 })
 
 // to create new user model
-const User = mongoose.model('user',userSchema)
+const User = mongoose.model('User',userSchema)
 
 module.exports = User

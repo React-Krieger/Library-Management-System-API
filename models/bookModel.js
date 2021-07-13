@@ -2,7 +2,7 @@ const mongoose =  require("mongoose")
 
 const bookSchema = mongoose.Schema({
     image:{
-        type:File,
+        type:Buffer,
         required:true
     },
     name:{
@@ -11,16 +11,18 @@ const bookSchema = mongoose.Schema({
     },
     type:{
         type:String,
-        required:true
+        required:true,
+        default:'PDF'
     },
     ISBN:{
-        type:Number,
+        type:String,
         required:true,
         unique:true
     },
     availibity:{
         type:String,
-        required:true
+        required:true,
+        default:'not available'
     },
     edition:{
         type:String,
@@ -38,7 +40,8 @@ const bookSchema = mongoose.Schema({
     ],
     condition:{
         type:String,
-        required:true
+        required:true,
+        default:'Normal'
     },
     issued:{
         type:Boolean,
@@ -51,6 +54,6 @@ const bookSchema = mongoose.Schema({
 })
 
 
-const Book = mongoose.model('book',bookSchema)
+const Book = mongoose.model('Book',bookSchema)
 
 module.exports = Book

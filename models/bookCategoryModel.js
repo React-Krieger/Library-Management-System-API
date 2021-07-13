@@ -1,36 +1,31 @@
-const mongoose =  require("mongoose")
+const mongoose = require("mongoose")
 
 const bookCategorySchema = mongoose.Schema({
-
-    category:{
+    category: {
         
-        name:{
-            type:String,
-            required:true,
-            unique:true
+        name: {
+            type: String,
+            required: true,
+            unique: true
         },
-        books:[
+        books: [
             {
-                ref_id:{
-                    type:mongoose.Schema.Types.ObjectId,
-                    required:true,
-                    unique:true
-                },
-                name:{
-                    type:String,
-                    required:true
+                bookRefId: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    required: true,
+                    ref: 'Book'
                 }
             }
         ]
     }
 },
-{
-    timestamps:true
-    
-})
+    {
+        timestamps: true
+
+    })
 
 
-const BookCategory = mongoose.model('bookCategory',bookCategorySchema)
+const BookCategory = mongoose.model('BookCategory', bookCategorySchema)
 
 module.exports = BookCategory
 
