@@ -5,9 +5,8 @@ const dotenv = require("dotenv")
 dotenv.config()
 
 const jwtAuth = async (req, res, next) => {
-
     try {
-        console.log(req.body)
+        console.log("I am in JWT")
         // const token = req.header("Authorization").replace("Bearer ", "")
         const token = req.body.token
         const decoded = jwt.verify(token, process.env.SECRET_KEY)
@@ -19,6 +18,7 @@ const jwtAuth = async (req, res, next) => {
         }
         req.token=token
         req.user=user
+        req.user.role
         console.log("authorized")
 
         next()
@@ -28,4 +28,21 @@ const jwtAuth = async (req, res, next) => {
     }
 }
 
-module.exports = jwtAuth
+const adminAuth = async (req, res, next) => {
+    try{
+        console.log("I am in adminAuth")
+
+        if (req.user && req.user.role==='admin') {
+            next()
+        } 
+        else {
+            res.status(401)
+            throw new Error('Not authorized user!!')
+        }
+    }
+    catch(err){
+        res.status(400).json({msg:err.message})
+    }
+}
+
+module.exports = {jwtAuth, adminAuth}

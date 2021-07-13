@@ -3,11 +3,13 @@ const mongoose =  require("mongoose")
 const bookSchema = mongoose.Schema({
     image:{
         type:Buffer,
-        required:true
+        required:true,
+        unique:true
     },
     name:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     type:{
         type:String,
@@ -30,7 +32,8 @@ const bookSchema = mongoose.Schema({
     },
     author:{
         type:String,
-        required:true
+        required:true,
+        default:'Unknown'
     },
     categories:[
         {
@@ -45,7 +48,8 @@ const bookSchema = mongoose.Schema({
     },
     issued:{
         type:Boolean,
-        required:true
+        required:true,
+        default:false
     }
 },
 {

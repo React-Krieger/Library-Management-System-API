@@ -4,16 +4,18 @@ const {
     userLogin, 
     userLogout, 
     userUpdate, 
-    logoutAllSessions 
+    logoutAllSessions,
+    getAllUsers
 } = require('../controllers/userControllers');
 
 const router = express.Router();
 
-const jwtAuth = require("../middlewares/jwtAuth")
-
+const {jwtAuth, adminAuth} = require("../middlewares/jwtAuth")
 
 router.post("/signup",userSignup)
 router.post("/login",userLogin)
+
+router.post("/getallusers",jwtAuth, adminAuth, getAllUsers)
 
 router.patch('/update', jwtAuth, userUpdate)
 
