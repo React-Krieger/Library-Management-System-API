@@ -1,10 +1,10 @@
 const http = require("http")
 const app = require("./app.js")
-const connectDatabase = require("./config/database")
+const connectDB = require("./config/database")
 server = http.createServer(app)
 
 // connect database
-connectDatabase()
+connectDB()
 
 const PORT = process.env.PORT || 5000
 

@@ -1,12 +1,12 @@
 // const express = require("express")
-const User = require('../models/userModel')
+const Users = require('../models/userModel')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 // get all users if you are admin or manager
 const getAllUsers = async (req, res) => {
 	try {
-		const users = await User.find({})
+		const users = await Users.find({})
 		res.status(200).json({ msg: 'successfully got all users', users })
 	} catch (err) {
 		res.status(400).json({ msg: err.message })
@@ -26,7 +26,7 @@ const userSignup = async (req, res) => {
 		// creating user
 		// const user = await User.create({ name, email, password })
 
-		const user = new User(req.body)
+		const user = new Users(req.body)
 		await user.save()
 		if (user) {
 			const token = await user.generateAuthToken()
@@ -49,7 +49,7 @@ const userSignup = async (req, res) => {
 const userLogin = async (req, res) => {
 	try {
 		console.log('logining...')
-		const user = await User.findOne({ email: req.body.email })
+		const user = await Users.findOne({ email: req.body.email })
 
 		console.log('user found', user)
 
@@ -92,7 +92,7 @@ const userUpdate = async (req, res) => {
 			}
 		}
 		//to save updated user
-		const updatedUser = new User(req.user)
+		const updatedUser = new Users(req.user)
 		await updatedUser.save()
 
 		res.status(200).json({ msg: 'user updated successfully', updatedUser })

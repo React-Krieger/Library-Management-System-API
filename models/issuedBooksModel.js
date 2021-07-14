@@ -1,17 +1,17 @@
 const mongoose = require("mongoose")
 
-const issuedBookSchema = mongoose.Schema({
+const issuedBooksSchema = mongoose.Schema({
     issuedBooks: [
         {
             bookRefId: {
                 type: mongoose.Schema.Types.ObjectId,
                 required: true,
-                ref: "Book",
+                ref: "Books",
             },
             userRefId: {
                 type: mongoose.Schema.Types.ObjectId,
                 required: true,
-                ref: "User",
+                ref: "Users",
             },
         },
     ],
@@ -21,6 +21,6 @@ const issuedBookSchema = mongoose.Schema({
     }
 );
 
-const IssuedBook = mongoose.model("IssuedBook", issuedBookSchema)
+const IssuedBooks = mongoose.model("IssuedBooks", issuedBooksSchema)
 
-module.exports = IssuedBook
+module.exports = IssuedBooks

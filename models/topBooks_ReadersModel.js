@@ -4,14 +4,14 @@ const topBookListSchema = mongoose.Schema({
     bookRefId: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'Book'
+        ref: 'Books'
     },
     users:[
         {
             userRefId: {
                 type: mongoose.Schema.Types.ObjectId,
                 required: true,
-                ref: "User",
+                ref: "Users",
             }
         }
     ]
