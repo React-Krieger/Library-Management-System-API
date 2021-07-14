@@ -40,3 +40,12 @@
         . use PascalCase for model name
         . use 'ref' for adding foreign key
         . Type of ISBN updated
+
+## 14 Jul, 2021 (5th day)
+
+    Added seeder.js file for testing purposes
+        . adding sample data in MongoDB
+        . or destroying all the data 
+
+    Refined the models and routers a byte more
+    

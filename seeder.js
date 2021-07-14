@@ -29,7 +29,7 @@ const importData = async () => {
         await IssuedBooks.deleteMany()
         await BookCategories.deleteMany()
         await TopBooks.deleteMany()
-
+        
         //inserting sample data
         await Users.insertMany(sampleUsers)
         await Books.insertMany(sampleBooks)

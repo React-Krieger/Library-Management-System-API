@@ -13,6 +13,20 @@ const getAllUsers = async (req, res) => {
 	}
 }
 
+const getUser = async (req,res)=>{
+	try{
+		//for double verification, incase anyone steal the token and temper via proxy like burpsuit 
+		const user = await Users.findById(req.body.id)		
+		if(!user){
+			throw new Error("User not found!!!")
+		}
+		res.status(200).json({ msg: 'successfully got the user', user:user })
+	}
+	catch(err){
+		res.status(400).json({ msg: err.message })
+	}
+}
+
 // signup controller
 const userSignup = async (req, res) => {
 	try {
@@ -149,4 +163,5 @@ module.exports = {
 	logoutAllSessions,
 	userUpdate,
 	getAllUsers,
+	getUser
 }

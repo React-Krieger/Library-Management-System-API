@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken")
-const User = require("../models/userModel")
+const Users = require("../models/userModel")
 const dotenv = require("dotenv")
 
 dotenv.config()
@@ -7,18 +7,17 @@ dotenv.config()
 const jwtAuth = async (req, res, next) => {
     try {
         console.log("I am in JWT")
-        // const token = req.header("Authorization").replace("Bearer ", "")
-        const token = req.body.token
+        const token = req.header("Authorization").replace("Bearer ", "")
+        // const token = req.body.token
         const decoded = jwt.verify(token, process.env.SECRET_KEY)
         
-        const user = await User.findOne({ _id: decoded._id, 'tokens.token': token })
+        const user = await Users.findOne({ _id: decoded._id, 'tokens.token': token })
         
         if (!user){
             throw new Error()
         }
         req.token=token
         req.user=user
-        req.user.role
         console.log("authorized")
 
         next()

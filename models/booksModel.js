@@ -20,11 +20,11 @@ const bookReviewsSchema = mongoose.Schema(
 
 const bookSchema = mongoose.Schema(
 	{
-		image: {
-			type: Buffer,
-			required: true,
-			unique: true,
-		},
+		// image: {
+		// 	type: Buffer,
+		// 	required: true,
+		// 	unique: true,
+		// },
 		name: {
 			type: String,
 			required: true,
@@ -40,7 +40,7 @@ const bookSchema = mongoose.Schema(
 			required: true,
 			unique: true,
 		},
-		availibity: {
+		availibility: {
 			type: String,
 			required: true,
 			default: 'not available',
@@ -53,6 +53,7 @@ const bookSchema = mongoose.Schema(
 		edition: {
 			type: String,
 			required: true,
+			defaullt:'0'
 		},
 		author: {
 			type: String,
